@@ -11,15 +11,20 @@ class ComputersController < ApplicationController
     end
 
     def create 
-        byebug
-        computer = Computer.create!(computer_params)
+        computer = Computer.create(computer_params)
         render json: computer, status: :created
+    end
+
+    def destroy
+        computer = Computer.find(params[:id])
+        computer.destroy
+        head :no_content
     end
 
 
     private
     
     def computer_params
-        params.permit(asset_tag: params[:asset_tag], building_id: params[:building_id], model: params[:model], serial_number: params[:serial_number], checkout_status: params[:checkout_status])
+        params.permit(:asset_tag, :model, :building_id, :serial_number, :checkout_status)
     end
 end
