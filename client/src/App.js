@@ -3,18 +3,29 @@ import './App.css';
 import React, { useEffect, useState } from 'react'
 
 function App() {
-  const [computers, setComputers] = useState([])  
+  const [buildings, setBuildings] = useState([]);
+  const [selectedBuilding, setSelectedBuilding] = useState([]);
 
   useEffect(() => {
-    fetch('computers')
+    fetch('buildings')
     .then((res) => res.json()
-    .then((data) => console.log(data))
+    .then((data) => setBuildings(data))
     )
   }, [])
+
+  const buildingsToRender = buildings.map((building) => (
+    <option key={building.id} value={building.name}>{building.name}</option>
+  ))
 
   return (
     <div className="App">
       <h1>Inventory App</h1>
+      <select onChange={(e) => setSelectedBuilding(e.target.value)}>
+        {buildingsToRender}
+      </select>
+      <ul>
+
+      </ul>
     </div>
   );
 }
