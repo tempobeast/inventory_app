@@ -53,3 +53,24 @@ li {
 li p {
   width: 12rem;
 }
+
+.computer-container{
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(241, 241, 241);
+  margin: 1rem;
+  border-radius: 12px;
+}
+
+.computer-item{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.transfer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  
+}

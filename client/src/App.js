@@ -9,6 +9,7 @@ function App() {
     code: "",
     computers: []
   });
+  const [transfer, setTransfer] = useState(false)
 
   useEffect(() => {
     fetch('buildings')
@@ -22,10 +23,19 @@ function App() {
   ))
   
   const computersToRender = selectedBuilding.computers.map((computer) => (
-    <li key={computer.id}>
-      <p>{computer.asset_tag}</p>
-      <p>{computer.model}</p>
-      <p>{computer.serial_number}</p>
+    <li className='computer-container' key={computer.id}>
+      <div className='computer-item'>
+        <p>{computer.asset_tag}</p>
+        <p>{computer.model}</p>
+        <p>{computer.serial_number}</p>
+        <button onClick={() => setTransfer(!transfer)}>transfer</button>
+      </div>
+      {transfer ?
+      <div className='transfer'>
+        <p>From:</p><p>to:</p><button>submit</button>
+      </div>
+      : null
+      }
     </li>
   ))
 
