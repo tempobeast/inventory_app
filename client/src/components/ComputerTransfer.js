@@ -1,11 +1,33 @@
 import { useState } from 'react'
 
-function ComputerContainer({selectedBuilding}) {
+function ComputerContainer({computer, setTransfer, selectedBuilding}) {
 
     const [to, setTo] = useState('')
+    const [transferType, setTransferType] = useState('')
+
+    console.log(computer)
+    
+    function handleSubmit(e) {
+        e.preventDefault()
+
+        fetch(`transfers`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: {
+                to: to,
+                from: selectedBuilding,
+                transfer_type: transferType,
+                computer_id: computer.id
+            }
+        }).then((res) => res.json())
+        .then((data) => console.log(data))
+    }
 
     return(
-       <form className='transfer'>
+       <form className='transfer' onSubmit={handleSubmit}>
+        <button onClick={() => setTransfer(false)}>x</button>
         <label>To: </label>
         <input 
             type="text"
@@ -13,6 +35,15 @@ function ComputerContainer({selectedBuilding}) {
             value={to}
             onChange={(e) => setTo(e.target.value)}
         />
+        <label>Transfer-type: </label>
+        <input 
+            type="text"
+            id="Transfer-type"
+            value={transferType}
+            onChange={(e) => setTransferType(e.target.value)}
+        />
+
+        <button type='submit'>submit</button>
        </form>
     )
 

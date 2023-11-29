@@ -3,7 +3,7 @@ import Computer from "./Computer"
 function ComputerContainer({selectedBuilding}) {
 
     const computersToRender = selectedBuilding.computers.map((computer) => (
-        <Computer computer={computer}/>
+        <Computer key={computer.id} computer={computer} selectedBuilding={selectedBuilding}/>
       ))
 
     return(

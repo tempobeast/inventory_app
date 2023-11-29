@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import ComputerTransfer from './ComputerTransfer'
 
-function Computer({computer}) {
+function Computer({computer, selectedBuilding}) {
     const [transfer, setTransfer] = useState(false)
 
     return(
@@ -13,7 +13,7 @@ function Computer({computer}) {
             <button onClick={() => setTransfer(!transfer)}>transfer</button>
           </div>
           {transfer ?
-          <ComputerTransfer />
+          <ComputerTransfer computer={computer} setTransfer={setTransfer} selectedBuilding={selectedBuilding}/>
           : null
           }
         </li>
