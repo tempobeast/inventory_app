@@ -15,12 +15,12 @@ function ComputerContainer({computer, setTransfer, selectedBuilding}) {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: {
+            body: JSON.stringify({
                 to: to,
                 from: selectedBuilding,
                 transfer_type: transferType,
                 computer_id: computer.id
-            }
+            })
         }).then((res) => res.json())
         .then((data) => console.log(data))
     }
