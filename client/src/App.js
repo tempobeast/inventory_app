@@ -1,7 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
 import React, { useEffect, useState } from 'react'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import ComputerContainer from './components/ComputerContainer'
+import Header from './components/Header'
+import Nav from './components/Nav'
 
 function App() {
   const [buildings, setBuildings] = useState([]);
@@ -18,25 +20,12 @@ function App() {
     )
   }, [])
 
-  const buildingsToRender = buildings.map((building) => (
-    <option key={building.id} value={building.name}>{building.name}</option>
-  ))
-  
-  
-
-  function handleBuildingChange(e) {
-    setSelectedBuilding(buildings.find((building) => building.name === e.target.value))
-  }
-
   return (
     <div className="App">
-      <h1>Inventory App</h1>
-      <select onChange={handleBuildingChange}>
-        {buildingsToRender}
-      </select>
+      <Header />
+      <Nav buildings={buildings} setSelectedBuilding={setSelectedBuilding}/>
       {selectedBuilding ? 
       <ul>
-        
         <ComputerContainer selectedBuilding={selectedBuilding}/>
       </ul>
       : null
