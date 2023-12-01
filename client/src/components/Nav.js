@@ -1,4 +1,7 @@
+import { useState } from "react"
+
 function Nav({buildings, setSelectedBuilding}) {
+    const [ search, setSearch ] = useState('')
 
     const buildingsToRender = buildings.map((building) => (
         <option key={building.id} value={building.name}>{building.name}</option>
@@ -13,6 +16,12 @@ function Nav({buildings, setSelectedBuilding}) {
             <select onChange={handleBuildingChange}>
                 {buildingsToRender}
             </select>
+            <label>Search:</label>
+            <input 
+                type="text"
+                onChange={(e) => setSearch(e.target.value)}
+                value={search}
+            />
         </div>
     )
 }
