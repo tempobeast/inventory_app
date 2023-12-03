@@ -1,8 +1,16 @@
 import Computer from "./Computer"
 
-function ComputerContainer({selectedBuilding}) {
+function ComputerContainer({selectedBuilding, search}) {
 
-    const computersToRender = selectedBuilding.computers.map((computer) => (
+    const filterComputers = selectedBuilding.computers.filter((computer) => {
+        if(search) {
+            return computer.asset_tag.toString().startsWith(search.toString())
+        } else {
+            return selectedBuilding.computers
+        }
+    })
+
+    const computersToRender = filterComputers.map((computer) => (
         <Computer key={computer.id} computer={computer} selectedBuilding={selectedBuilding}/>
       ))
 

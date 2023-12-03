@@ -1,7 +1,6 @@
 import { useState } from "react"
 
-function Nav({buildings, setSelectedBuilding}) {
-    const [ search, setSearch ] = useState('')
+function Nav({buildings, setSelectedBuilding, setSearch, search}) {
 
     const buildingsToRender = buildings.map((building) => (
         <option key={building.id} value={building.name}>{building.name}</option>

@@ -12,6 +12,7 @@ function App() {
     code: "",
     computers: []
   });
+  const [search, setSearch] = useState('')
   
   useEffect(() => {
     fetch('buildings')
@@ -23,10 +24,10 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Nav buildings={buildings} setSelectedBuilding={setSelectedBuilding}/>
+      <Nav search={search} setSearch={setSearch} buildings={buildings} setSelectedBuilding={setSelectedBuilding}/>
       {selectedBuilding ? 
       <ul>
-        <ComputerContainer selectedBuilding={selectedBuilding}/>
+        <ComputerContainer search={search} selectedBuilding={selectedBuilding}/>
       </ul>
       : null
     }
