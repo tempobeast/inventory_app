@@ -12,7 +12,8 @@ function Nav({buildings, setSelectedBuilding, setSearch, search}) {
 
     return (
         <div className="nav">
-            <select onChange={handleBuildingChange}>
+            <select defaultValue="all" onChange={handleBuildingChange}>
+                <option value="all">All</option>
                 {buildingsToRender}
             </select>
             <label>Search:</label>
