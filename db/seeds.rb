@@ -10,7 +10,7 @@ x = 114000
     Computer.create({
         asset_tag: x + index,  
         model: 3310, 
-        building_id: rand(1...3), 
+        building_id: rand(1..3), 
         serial_number: "ASX" + rand(100...999).to_s
     })
 end
