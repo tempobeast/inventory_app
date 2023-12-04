@@ -4,8 +4,6 @@ function ComputerContainer({computer, setTransfer, selectedBuilding}) {
 
     const [to, setTo] = useState('')
     const [transferType, setTransferType] = useState('')
-
-    console.log(computer)
     
     function handleSubmit(e) {
         e.preventDefault()
