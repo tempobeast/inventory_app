@@ -1,9 +1,14 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { BuildingsContext } from '../context/buildings'
+import { SelectedBuildingContext } from '../context/selectedBuilding'
 
-function ComputerContainer({computer, setTransfer, selectedBuilding}) {
+function ComputerContainer({ computer, setTransfer }) {
 
     const [to, setTo] = useState('')
     const [transferType, setTransferType] = useState('')
+    const {buildings, setBuildings} = useContext(BuildingsContext)
+    const { selectedBuilding, setSelectedBuilding } = useContext(SelectedBuildingContext)
+    console.log(selectedBuilding)
     
     function handleSubmit(e) {
         e.preventDefault()
@@ -20,7 +25,13 @@ function ComputerContainer({computer, setTransfer, selectedBuilding}) {
                 computer_id: computer.id
             })
         }).then((res) => res.json())
-        .then((data) => console.log(data))
+        .then((data) => {
+            const fromBuilding = data[0];
+            const toBuilding = data[1];
+            const otherBuildings = buildings.filter((building) => building.id !== data[0].id && building.id !== data[1].id);
+            setSelectedBuilding(fromBuilding)
+            setBuildings([...otherBuildings, fromBuilding, toBuilding])
+        })
     }
 
     return(

@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import ComputerTransfer from './ComputerTransfer'
+import { SelectedBuildingContext } from '../context/selectedBuilding'
 
-function Computer({computer, selectedBuilding}) {
-    const [transfer, setTransfer] = useState(false)
+function Computer({ computer }) {
+    const [transfer, setTransfer] = useState(false);
+    const { selectedBuilding } = useContext(SelectedBuildingContext);
 
     return(
         <li className='computer-container' key={computer.id}>
@@ -18,6 +20,5 @@ function Computer({computer, selectedBuilding}) {
           }
         </li>
     )
-
 }
 export default Computer

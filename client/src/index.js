@@ -4,11 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import { BuildingsProvider } from './context/buildings'
+import { SelectedBuildingProvider } from './context/selectedBuilding';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <App />
+    <BuildingsProvider>
+      <SelectedBuildingProvider>
+        <App />
+      </SelectedBuildingProvider>
+    </BuildingsProvider>
   </BrowserRouter>
 );
 

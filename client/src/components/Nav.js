@@ -1,6 +1,10 @@
-import { useState } from "react"
+import { useContext } from "react"
+import { BuildingsContext } from "../context/buildings"
+import { SelectedBuildingContext } from "../context/selectedBuilding"
 
-function Nav({buildings, setSelectedBuilding, setSearch, search}) {
+function Nav({ setSearch, search}) {
+    const { buildings } = useContext(BuildingsContext);
+    const { setSelectedBuilding } = useContext(SelectedBuildingContext)
 
     const buildingsToRender = buildings.map((building) => (
         <option key={building.id} value={building.name}>{building.name}</option>
