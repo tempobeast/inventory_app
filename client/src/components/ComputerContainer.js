@@ -1,7 +1,12 @@
-import Computer from "./Computer"
+import { useContext } from "react";
+import Computer from "./Computer";
+import { SelectedBuildingContext } from "../context/selectedBuilding";
 
-function ComputerContainer({selectedBuilding, search}) {
 
+
+function ComputerContainer({ search }) {
+    const { selectedBuilding } = useContext(SelectedBuildingContext)
+    
     const filterComputers = selectedBuilding.computers.filter((computer) => {
         if(search) {
             return computer.asset_tag.toString().startsWith(search.toString())
@@ -11,7 +16,7 @@ function ComputerContainer({selectedBuilding, search}) {
     })
 
     const computersToRender = filterComputers.map((computer) => (
-        <Computer key={computer.id} computer={computer} selectedBuilding={selectedBuilding}/>
+        <Computer key={computer.id} computer={computer}/>
       ))
 
     return(
