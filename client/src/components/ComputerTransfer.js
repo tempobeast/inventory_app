@@ -8,7 +8,6 @@ function ComputerContainer({ computer, setTransfer }) {
     const [transferType, setTransferType] = useState('')
     const {buildings, setBuildings} = useContext(BuildingsContext)
     const { selectedBuilding, setSelectedBuilding } = useContext(SelectedBuildingContext)
-    console.log(selectedBuilding)
     
     function handleSubmit(e) {
         e.preventDefault()
