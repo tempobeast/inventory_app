@@ -65,6 +65,7 @@ li p {
 .computer-item{
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-around;
 }
 
@@ -72,5 +73,23 @@ li p {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  
+}
+
+.transfer-button{
+  width: 5rem;
+  height: 2rem;
+  margin-right: 1rem;
+  vertical-align: center;
+}
+
+.arrow{
+  width: 1.5rem;
+  margin-left: 1rem;
+}
+
+.computer-container__header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 0 6rem 0 3rem
 }

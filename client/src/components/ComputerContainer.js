@@ -21,7 +21,7 @@ function ComputerContainer({ search }) {
 
     return(
         <ul>
-            <li>
+            <li className="computer-container__header">
             <p>Tag Number</p>
             <p>Model</p>
             <p>Serial Number</p>

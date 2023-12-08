@@ -1,8 +1,7 @@
-function ComputerPage({setOpenComputerPage}) {
+function ComputerPage() {
     return (
         <div>
             <p>Computer Page</p>
-            <button onClick={() => setOpenComputerPage(false)}>Close</button>
         </div>
     )
 }

@@ -9,15 +9,16 @@ function Computer({ computer }) {
     const { selectedBuilding } = useContext(SelectedBuildingContext);
 
     return(
-        <li className='computer-container' key={computer.id} onClick={() => setOpenComputerPage(true)}>
+        <li className='computer-container' key={computer.id} >
           <div className='computer-item'>
+            <p className='arrow' onClick={() => setOpenComputerPage(!openComputerPage)}>{!openComputerPage ? '▶' : '▼'}</p>
             <p>{computer.asset_tag}</p>
             <p>{computer.model}</p>
             <p>{computer.serial_number}</p>
-            <button onClick={() => setTransfer(!transfer)}>transfer</button>
+            <button className='transfer-button' onClick={() => setTransfer(!transfer)}>transfer</button>
           </div>
           {openComputerPage ? 
-          <ComputerPage setOpenComputerPage={setOpenComputerPage}/>
+          <ComputerPage />
             : null
           }
           {transfer ?
